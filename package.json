@@ -1,0 +1,23 @@
+{
+  "name": "mongo2parsesync",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.10.6",
+    "mongoose": "^4.1.7",
+    "parse": "^1.6.3",
+    "underscore": "^1.8.3",
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-rsync": "0.0.5",
+    "gulp-watch": "^4.3.5"
+  }
+}
