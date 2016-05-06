@@ -8,10 +8,10 @@ gulp.task('deploy', function() {
   gulp.src('./*')
     .pipe(rsync({
       root: './',
-      username: 'teciot',
+      username: 'energy',
       hostname: '186.176.109.126',
       exclude:['./node_modules'],
-      destination: '/home/teciot/productive/mongo2parsesync'
+      destination: '/home/energy/productive/mongo2parsesync'
     }));
 });
 
