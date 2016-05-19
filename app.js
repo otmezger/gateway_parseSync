@@ -2,7 +2,7 @@ var _ = require('underscore');
 var mongoose = require('mongoose'); // from http://mongoosejs.com/docs/index.html
 var Parse = require('parse/node').Parse;
 var moment = require('moment');
-var config = require('config');
+var config = require('./config');
 
 
 var NBatchSaveAll = 10;
@@ -29,6 +29,7 @@ var dataPointSchema = new mongoose.Schema({
 
 
 Parse.initialize(config.appKey, config.jsKey,config.masterKey);
+Parse.serverURL = config.serverURL;
 Parse.Cloud.useMasterKey();
 
 
@@ -170,6 +171,9 @@ var doSync = function(){
 
                 //
                 //return Parse.Promise.when(mongooseSavePromisesArray);
+              },function(errror){
+                console.log('error');
+                console.log(error);
               }); //internalPromise tail
               //console.log('going to return internalPromise');
               return internalPromise;
