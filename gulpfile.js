@@ -9,7 +9,7 @@ gulp.task('deploy', function() {
     .pipe(rsync({
       root: './',
       username: 'teciot',
-      hostname: '172.21.255.33',
+      hostname: '172.18.129.223',
       exclude:['./node_modules'],
       destination: '/home/teciot/productive/sync'
     }));
