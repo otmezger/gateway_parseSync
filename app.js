@@ -12,8 +12,6 @@ var db = mongoose.connect('mongodb://localhost/sensors');
 //var db = mongoose.connect('mongodb://db.local/sensors');
 
 
-
-//var DataPointModel = require('../API/models/dataPointModel')['DataPointModel'];
 var dataPointSchema = new mongoose.Schema({
     value: {
         type: Number
@@ -139,12 +137,17 @@ var doSync = function(){
               console.log('--- --- attempting to save ' + dataObjectParseArray_.length + ' datapoints.');
               var internalPromise = Parse.Promise.as();
               internalPromise.then(function(){
-                console.log('--- --- --- saving to parse');
-                return Parse.Object.saveAll(dataObjectParseArray_);
+                console.log('--- --- --- saving to parse!');
+                return Parse.Object.saveAll(dataObjectParseArray_).then(function(){
+                  console.log('--- --- ---> Saving to parse OK');
+                },function(e){
+                  console.log('--- --- ---> Saving to parse KO with error:');
+                  console.log(e);
+                });
 
               }).then(function(){
                 // here we need to save this objects in mongo
-                //console.log('--- --- --- updating mongo');
+                console.log('--- --- --- updating mongo');
                 if (dataObjectMongoArray.length > 0){
                   var mongooseSaveIDs = [];
                   _.each(dataObjectMongoArray,function(thisDataPointInternal){

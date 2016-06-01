@@ -15,7 +15,19 @@ gulp.task('deploy', function() {
     }));
 });
 
-
+gulp.task('deployOlmo', function() {
+  gulp.src('./*')
+    .pipe(rsync({
+      root: './',
+      username: 'energy',
+      hostname: '192.168.1.116',
+      exclude:['./node_modules'],
+      destination: '/home/energy/productive/mongo2parsesync'
+    }));
+});
 gulp.task('watch', function () {
         gulp.watch('./*.js', ['deploy']);
-})
+});
+gulp.task('watchOlmo', function () {
+        gulp.watch('./*.js', ['deployOlmo']);
+});
